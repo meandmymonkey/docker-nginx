@@ -3,12 +3,13 @@ FROM ubuntu:14.04
 MAINTAINER Andreas Hucks "andreas@inputrequired.org"
 
 RUN \
-    add-apt-repository -y ppa:nginx/stable && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
         software-properties-common \
-        python-software-properties \
-        nginx
+        python-software-properties && \
+    add-apt-repository -y ppa:nginx/stable && \
+    apt-get update && \
+    apt-get install -y nginx
 
 RUN \
     mkdir /var/www && echo "Nginx container" > /var/www/index.html
